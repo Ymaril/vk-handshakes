@@ -1,5 +1,5 @@
 import React from 'react';
-import connect from '@vkontakte/vkui-connect';
+import vk_connect from '@vkontakte/vkui-connect';
 import { View } from '@vkontakte/vkui';
 import '@vkontakte/vkui/dist/vkui.css';
 
@@ -17,28 +17,34 @@ class App extends React.Component {
 	}
 
 	componentDidMount() {
-		connect.subscribe((e) => {
+		vk_connect.subscribe((e) => {
 			switch (e.detail.type) {
 				case 'VKWebAppGetUserInfoResult':
-					this.setState({ fetchedUser: e.detail.data });
+					this.setState({
+						fetchedUser: e.detail.data
+					});
 					break;
 				default:
 					console.log(e.detail.type);
 			}
 		});
-		connect.send('VKWebAppGetUserInfo', {});
+		vk_connect.send('VKWebAppGetUserInfo', {});
 	}
 
 	go = (e) => {
-		this.setState({ activePanel: e.currentTarget.dataset.to })
+		this.setState({
+			activePanel: e.currentTarget.dataset.to
+		})
 	};
 
 	render() {
+        console.log(this.props);
+
 		return (
-			<View activePanel={this.state.activePanel}>
-				<Home id="home" fetchedUser={this.state.fetchedUser} go={this.go} />
-				<Persik id="persik" go={this.go} />
-			</View>
+            <View activePanel = { this.state.activePanel } >
+                <Home id = "home" fetchedUser = { this.state.fetchedUser } go = { this.go }/>
+                <Persik id = "persik" go = { this.go }/>
+            </View>
 		);
 	}
 }

@@ -3,7 +3,10 @@ import 'core-js/es6/set';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import connect from '@vkontakte/vkui-connect';
+import { I18nextProvider } from "react-i18next";
+
 import App from './App';
+import i18n from "./i18n";
 // import registerServiceWorker from './sw';
 
 // Init VK App
@@ -15,4 +18,10 @@ connect.send('VKWebAppInit', {});
 // Подробнее про сервис воркеры можно почитать тут — https://vk.cc/8MHpmT 
 // registerServiceWorker();
 
-ReactDOM.render(<App />, document.getElementById('root'));
+
+ReactDOM.render(
+    <I18nextProvider i18n={i18n}>
+        <App />
+    </I18nextProvider>,
+    document.getElementById("root")
+);
