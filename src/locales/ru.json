@@ -1,7 +1,7 @@
 {
-    "ru": {
-        "translation": {
-            "test_message": "Это тестовое сообщение"
-        }
+  "ru": {
+    "translation": {
+      "test_message": "Это тестовое сообщение"
     }
+  }
 }

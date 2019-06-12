@@ -1,7 +1,7 @@
 {
-    "en": {
-        "translation": {
-            "test_message": "This is a test message"
-        }
+  "en": {
+    "translation": {
+      "test_message": "This is a test message"
     }
+  }
 }
